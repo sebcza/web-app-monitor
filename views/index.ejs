@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/bootstrap/dist/css/bootstrap.css" />
+    <link rel='stylesheet' href='/css/style.css' />
+    <script src='jquery.min.js'></script>
+    <script src="/css/bootstrap/dist/js/bootstrap.js"></script>
+    <script src='/js/skrypt.js'></script>
+  </head>
+  <body>
+    <p>Welcome to <%= title %></p>
+    <div class="container" style="text-algin:center">
+        <button id="start-button" class="btn btn-lg btn-success">Start</button>
+    </div>
+    
+    <div id="number"></div>
+    
+    
+ <div class="modal fade" id="start-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Zacznij grę</h4>
+      </div>
+      <div class="modal-body">
+        <span>Size:</span>
+        <input type="text" id="size-input"/>
+        <span>Dim:</span>
+        <input type="text" id="dim-input"/>
+        <span>Max:</span>
+        <input type="text" id="max-input"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="pButton" type="button" class="btn btn-primary">Play</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+  </body>
+</html>
