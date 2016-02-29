@@ -1,0 +1,62 @@
+        <% include ./partials/header %>
+   <section class="content">
+    <div class="row">
+     <h2>Zużycie procesora</h2>
+      <div data-bind="progress: cpu">
+      </div>        
+    </div>
+    
+     <div class="row">
+     <h2>Zużycie pamięci</h2>
+      <div style="font-size:24px;">
+      <span data-bind="text:memory"></span> 
+      <span> Gb</span>
+      </div>        
+    </div>   
+
+    
+   <div class="row" style="padding:20px">
+      <h3>Filtruj</h3>
+       <input type="radio" value="All" name="typeSort" data-bind="checked:type"> All
+       <input type="radio" value="error" name="typeSort" data-bind="checked:type"> Errors
+       <input type="radio" value="http" name="typeSort" data-bind="checked:type"> Http
+       <input type="radio" value="database" name="typeSort" data-bind="checked:type"> Database
+   </div>
+    <div class="col-md-12" >
+       <h2>Errors Log</h2>
+        <table class="table">
+          <tr>
+              <th>Type</th>
+              <th>Date</th>
+              <th>Value</th>
+          </tr>
+          <tbody data-bind="foreach:logs">
+              <tr>
+                  <td data-bind="text:$data.type"></td>
+                  <td data-bind="text:$data.date"></td>
+                  <td data-bind="text:$data.content"></td>
+              </tr>             
+          </tbody>
+
+        </table>
+    </div>
+
+
+    <script src='/jquery.min.js'></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/css/bootstrap/dist/js/bootstrap.js"></script>
+    <script src='/js/App.js'></script>   
+    <script src='/js/knockout.js'></script>   
+    <script src='/js/knockstrap.min.js'></script>   
+    <script src='/js/viewModels/logViewModel.js'></script>   
+    <script src='/js/viewModels/auditLogViewModel.js'></script>   
+    
+     <script>
+        $(function () {
+            var logViewModel = new LogViewModel();
+            
+            ko.applyBindings(logViewModel);
+            logViewModel.init();
+        });
+    </script>
+        <% include ./partials/footer %>

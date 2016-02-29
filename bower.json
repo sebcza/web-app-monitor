@@ -12,6 +12,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "2.1.x"
+    "jquery": "2.1.x",
+    "knockout": "~3.3.0"
   }
 }

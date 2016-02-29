@@ -1,0 +1,71 @@
+        <% include ./partials/header %>
+   <section class="content">
+    <div class="row">
+     <h2>Zużycie procesora</h2>
+      <div data-bind="progress: cpu">
+      </div>        
+    </div>
+    
+     <div class="row">
+     <h2>Zużycie pamięci</h2>
+      <div style="font-size:24px;">
+      <span data-bind="text:memory"></span> 
+      <span> Gb</span>
+      </div>        
+    </div>   
+
+    
+   <div class="row" style="padding:20px">
+      <h3>Filtruj</h3>
+       <input type="radio" value="All" name="typeSort" data-bind="checked:auditType"> All
+       <input type="radio" value="loginFaild" name="typeSort" data-bind="checked:auditType"> Login Faild
+       <input type="radio" value="changeTeam" name="typeSort" data-bind="checked:auditType"> Change Team
+       <input type="radio" value="email" name="typeSort" data-bind="checked:auditType"> Emails
+       <input type="radio" value="changeUser" name="typeSort" data-bind="checked:auditType"> Change User
+       <input type="radio" value="changeEdition" name="typeSort" data-bind="checked:auditType"> Change Edition
+       <input type="radio" value="changePartners" name="typeSort" data-bind="checked:auditType"> Change Partners
+   </div>
+    <div class="col-md-12">
+       <h2>Audit Log</h2>
+        <table class="table">
+          <tr>
+              <th>Type</th>
+              <th>Date</th>
+              <th>ValueOld</th>
+              <th>ValueNew</th>
+              <th>Username</th>
+              <th>IP</th>
+          </tr>
+          <tbody data-bind="foreach:auditLogs">
+              <tr>
+                  <td data-bind="text:$data.type"></td>
+                  <td data-bind="text:$data.date"></td>
+                  <td data-bind="text:$data.contentOld"></td>
+                  <td data-bind="text:$data.contentNew"></td>
+                  <td data-bind="text:$data.userName"></td>
+                  <td data-bind="text:$data.ip"></td>
+              </tr>             
+          </tbody>
+
+        </table>        
+    </div>
+</section>
+
+
+    <script src='/jquery.min.js'></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/css/bootstrap/dist/js/bootstrap.js"></script>
+    <script src='/js/App.js'></script>   
+    <script src='/js/knockout.js'></script>   
+    <script src='/js/knockstrap.min.js'></script>   
+    <script src='/js/viewModels/auditLogViewModel.js'></script>   
+    
+     <script>
+        $(function () {
+            var viewModel = new AuditLogViewModel();
+            
+            ko.applyBindings(viewModel);
+            viewModel.init();
+        });
+    </script>
+        <% include ./partials/footer %>

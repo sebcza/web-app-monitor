@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/bootstrap/dist/css/bootstrap.css" />
+    <link rel='stylesheet' href='/css/style.css' />
+
+  </head>
+  <body>
+    
+    <div class="container" style="text-algin:center">
+        <div id="alertsn">
+            
+        </div>
+        <section class="header" style="text-align:center">
+            <img src="/images/logo.png"  alt="mat2tab logo"/>
+        </section>
+        <% if (isAuthorize) {%>
+        <ul class="nav nav-pills">
+          <li role="presentation"><a href="/">ErrorLogs</a></li>
+          <li role="presentation"><a href="/auditlog">AuditLogs</a></li>
+          <li role="presentation"><a href="/token">Tokens</a></li>
+          <li role="presentation"><a href="/notify">Notifications</a></li>
+          <li role="presentation"><a href="/logout">Logout</a></li>
+        </ul>
+        <% } %>

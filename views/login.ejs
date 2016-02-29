@@ -1,0 +1,30 @@
+
+       <% include ./partials/header %>
+        <section class="content">
+        <div class="login-form" style="width:40%; margin:0 auto">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input data-bind="value: userName" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter username">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input data-bind="value: password"
+ type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <button data-bind="click:login" type="button" class="btn btn-default">LogIn</button>
+          </div>
+        </section>
+    <script src='jquery.min.js'></script>
+    <script src="/css/bootstrap/dist/js/bootstrap.js"></script>
+    <script src='/js/App.js'></script>   
+    <script src='/js/knockout.js'></script>   
+    <script src='/js/viewModels/loginViewModel.js'></script>   
+    
+     <script>
+        $(function () {
+            var viewModel = new LoginViewModel();
+            ko.applyBindings(viewModel);
+            viewModel.init();
+        });
+    </script>
+<% include ./partials/footer %>

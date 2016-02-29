@@ -1,0 +1,58 @@
+        <% include ./partials/header %>
+   <section class="content">
+    <div class="row">
+     <h2>Zużycie procesora</h2>
+      <div data-bind="progress: cpu">
+      </div>        
+    </div>
+    
+     <div class="row">
+     <h2>Zużycie pamięci</h2>
+      <div style="font-size:24px;">
+      <span data-bind="text:memory"></span> 
+      <span> Gb</span>
+      </div>        
+    </div>   
+
+
+    <div class="col-md-12">
+       <h2>Notifcation</h2>
+        <table class="table">
+          <tr>
+              <th>Content</th>
+              <th>Date</th>
+              <th>Counter</th>
+          </tr>
+          <tbody data-bind="foreach:notifications">
+              <tr>
+                  <td data-bind="text:$data.content"></td>
+                  <td data-bind="text:$data.date"></td>
+                  <td data-bind="text:$data.counter"></td>
+
+              </tr>             
+          </tbody>
+
+        </table>        
+    </div>
+</section>
+
+
+
+
+    <script src='/jquery.min.js'></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/css/bootstrap/dist/js/bootstrap.js"></script>
+    <script src='/js/App.js'></script>   
+    <script src='/js/knockout.js'></script>   
+    <script src='/js/knockstrap.min.js'></script>   
+    <script src='/js/viewModels/notifyViewModel.js'></script>   
+    
+     <script>
+        $(function () {
+            var viewModel = new NotifyViewModel();
+            
+            ko.applyBindings(viewModel);
+            viewModel.init();
+        });
+    </script>
+        <% include ./partials/footer %>
